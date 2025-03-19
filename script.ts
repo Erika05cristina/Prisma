@@ -60,37 +60,51 @@ async function main() {
     //     take: 2,
     //     skip: 1,
     //   });
-    const user = await prisma.user.findMany({
-        where: {
-            // name: {not: "Erika" },
-            // name: {in: ["Erika", "Erika1"]},
-            // name: {notIn: ["Erika", "Erika1"]},
-            // age: {lt: 20},
-            // age: {gt: 20},
-            // age: {gte: 20},
-            // email: {contains: "@gmail.com"},
-            // email: {startsWith: "erika"},
-            // AND: [
-            //   {email: {contains: "@gmail.com"}},
-            //   {age: {gt: 20}},
-            // ]
-            // NOT: [
-            //   {email: {contains: "@gmail.com"}},
-            //   {age: {gt: 20}},
-            // ]
-            // UserPreference:{
-            //   emailUpdates: true,
-            // },
-            // writePosts:{
-            //   none:{
-            //     title: "Test"
-            //   }
-            // }
-        },
-    });
+    // const user = await prisma.user.findMany({
+    //     where: {
+    //         // name: {not: "Erika" },
+    //         // name: {in: ["Erika", "Erika1"]},
+    //         // name: {notIn: ["Erika", "Erika1"]},
+    //         // age: {lt: 20},
+    //         // age: {gt: 20},
+    //         // age: {gte: 20},
+    //         // email: {contains: "@gmail.com"},
+    //         // email: {startsWith: "erika"},
+    //         // AND: [
+    //         //   {email: {contains: "@gmail.com"}},
+    //         //   {age: {gt: 20}},
+    //         // ]
+    //         // NOT: [
+    //         //   {email: {contains: "@gmail.com"}},
+    //         //   {age: {gt: 20}},
+    //         // ]
+    //         // UserPreference:{
+    //         //   emailUpdates: true,
+    //         // },
+    //         // writePosts:{
+    //         //   none:{
+    //         //     title: "Test"
+    //         //   }
+    //         // }
+    //     },
+    // });
 
+    const user = await prisma.user.update({
+      where: {
+        email: "erika@gmail.com",
+      },
+      data: { 
+        age:{
+          increment: 1,
+        }
+      },
+    })
+
+
+      
     console.log(user);
 }
+
 
 main()
   .catch(e => {
