@@ -49,18 +49,46 @@ async function main() {
     //         }
     //     },
     // }); 
+    // const user = await prisma.user.findMany({
+    //     where: {
+    //         name: "Erika", 
+    //     },
+    //     // distinct: ['name'],
+    //     orderBy: {
+    //         age: 'desc',
+    //     },
+    //     take: 2,
+    //     skip: 1,
+    //   });
     const user = await prisma.user.findMany({
         where: {
-            name: "Erika", 
+            // name: {not: "Erika" },
+            // name: {in: ["Erika", "Erika1"]},
+            // name: {notIn: ["Erika", "Erika1"]},
+            // age: {lt: 20},
+            // age: {gt: 20},
+            // age: {gte: 20},
+            // email: {contains: "@gmail.com"},
+            // email: {startsWith: "erika"},
+            // AND: [
+            //   {email: {contains: "@gmail.com"}},
+            //   {age: {gt: 20}},
+            // ]
+            // NOT: [
+            //   {email: {contains: "@gmail.com"}},
+            //   {age: {gt: 20}},
+            // ]
+            // UserPreference:{
+            //   emailUpdates: true,
+            // },
+            // writePosts:{
+            //   none:{
+            //     title: "Test"
+            //   }
+            // }
+        },
+    });
 
-        },
-        // distinct: ['name'],
-        orderBy: {
-            age: 'desc',
-        },
-        take: 2,
-        skip: 1,
-      });
     console.log(user);
 }
 
