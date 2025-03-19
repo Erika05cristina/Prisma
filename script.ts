@@ -89,18 +89,35 @@ async function main() {
     //     },
     // });
 
-    const user = await prisma.user.update({
+    // const user = await prisma.user.update({
+    //   where: {
+    //     email: "erika@gmail.com",
+    //   },
+    //   data: { 
+    //     age:{
+    //       increment: 1,
+    //     }
+    //   },
+    // })
+
+    // const user = await prisma.user.update({
+    //   where: {
+    //     email: "erika@gmail.com",
+    //   },
+    //   data: { 
+    //     UserPreference:{
+    //       update: {
+    //         emailUpdates: false,
+    //       }
+    //     }
+    //   },
+    // })
+
+    const user = await prisma.user.delete({
       where: {
-        email: "erika@gmail.com",
+        email: "erika@gmail.com", 
       },
-      data: { 
-        age:{
-          increment: 1,
-        }
-      },
-    })
-
-
+    });
       
     console.log(user);
 }
